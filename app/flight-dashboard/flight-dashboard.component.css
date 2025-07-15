@@ -1,0 +1,33 @@
+.on-time {
+  color: green;
+  font-weight: bold;
+}
+
+.delayed {
+  color: orange;
+  font-weight: bold;
+}
+
+.cancelled {
+  color: red;
+  font-weight: bold;
+}
+
+.unknown {
+  color: gray;
+  font-weight: bold;
+}
+
+button {
+  margin-bottom: 12px;
+  padding: 8px 16px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

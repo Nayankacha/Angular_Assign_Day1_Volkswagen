@@ -1,0 +1,44 @@
+<h2>Flight Management Dashboard</h2>
+
+<!-- Filter Button -->
+<button (click)="toggleFilter()">
+  {{ showFiltered ? 'Show All Flights' : 'Show Only Indigo & SpiceJet' }}
+</button>
+
+<!-- Flight Table with *ngIf -->
+<div *ngIf="flightsToDisplay.length > 0; else noFlights">
+  <table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Flight Name</th>
+        <th>Flight Number</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Departure</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flight of flightsToDisplay">
+        <td>{{ flight.name }}</td>
+        <td>{{ flight.number }}</td>
+        <td>{{ flight.from }}</td>
+        <td>{{ flight.to }}</td>
+        <td>{{ flight.departure }}</td>
+        <td>
+          <span [ngSwitch]="flight.status">
+            <span *ngSwitchCase="'on-time'" class="on-time">On Time</span>
+            <span *ngSwitchCase="'delayed'" class="delayed">Delayed</span>
+            <span *ngSwitchCase="'cancelled'" class="cancelled">Cancelled</span>
+            <span *ngSwitchDefault class="unknown">Unknown</span>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- No Flights Template -->
+<ng-template #noFlights>
+  <p>No flights available today.</p>
+</ng-template>
